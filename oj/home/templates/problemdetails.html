@@ -67,10 +67,18 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
+        .home-button {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="home-button">
+            <a href="{% url 'home' %}">
+                <button type="button">Home</button>
+            </a>
+        </div>
         <h1>Problem Details</h1>
         {% if user.is_authenticated %}
             <h2>{{ problem.title }}</h2>
@@ -92,7 +100,7 @@
             </div>
             {% endif %}
 
-            <!-- Display Verdict -->
+            
             {% if verdict %}
             <div class="code-result">
                 <h3>Verdict</h3>

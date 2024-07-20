@@ -28,10 +28,18 @@
         .view-button {
             margin-top: 10px;
         }
+        .home-button {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="container mt-5">
+    <div class="home-button">
+        <a href="{% url 'home' %}">
+            <button type="button">Home</button>
+        </a>
+    </div>
     <h1>All Problems</h1>
     <div class="row">
     {% if user.is_authenticated %}
