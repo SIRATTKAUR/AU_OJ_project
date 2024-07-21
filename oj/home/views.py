@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from compiler.forms import CodeSubmissionForm
+from compiler.models import CodeSubmission
 from compiler.views import run_code
 from .models import Problems
 # Create your views here.
@@ -34,8 +35,10 @@ def problemdetails(request, id):
         form = CodeSubmissionForm()
 
     return render(request, "problemdetails.html", {"form": form, "problem": problem, "output_data": output_data})
-
-
+@login_required
+def recent_submissions(request):
+    recent_submissions = CodeSubmission.objects.order_by('-id')[:10]
+    return render(request, 'recent_submissions.html', {'recent_submissions': recent_submissions})
 
 
 
